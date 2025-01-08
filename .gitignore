@@ -1,0 +1,12 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Vite build output
+dist/
+
+# IDE/Editor specific
+.vscode/
+
+# macOS specific
+.DS_Store
