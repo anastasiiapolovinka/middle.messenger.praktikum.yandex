@@ -1,0 +1,11 @@
+{
+  "name": "polovinka_messanger",
+  "version": "1.0.0",
+  "description": "messanger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "polovinka",
+  "license": "ISC"
+}
