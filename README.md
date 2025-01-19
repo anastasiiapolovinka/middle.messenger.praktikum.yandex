@@ -56,11 +56,11 @@ npm run start
 
 Вот ссылки на все страницы:
 
-- [Чат](http://localhost:3000/)
-- [Вход](http://localhost:3000/login)
-- [Регистрация](http://localhost:3000/register)
-- [Профиль](http://localhost:3000/profile)
-- [Изменение пароля](http://localhost:3000/editpassword)
-- [Обновить данные профиля](http://localhost:3000/edituserdata)
-- [404 - Не найдено](http://localhost:3000/404)
-- [500 - Ошибка сервера](http://localhost:3000/500)
+- [Чат](https://deploy-preview-1--polovinka-messanger.netlify.app/)
+- [Вход](https://deploy-preview-1--polovinka-messanger.netlify.app/signin)
+- [Регистрация](https://deploy-preview-1--polovinka-messanger.netlify.app/register)
+- [Профиль](https://deploy-preview-1--polovinka-messanger.netlify.app/profile)
+- [Изменение пароля](https://deploy-preview-1--polovinka-messanger.netlify.app/editpassword)
+- [Обновить данные профиля](https://deploy-preview-1--polovinka-messanger.netlify.app/edituserdata)
+- [404 - Не найдено](https://deploy-preview-1--polovinka-messanger.netlify.app/404)
+- [500 - Ошибка сервера](https://deploy-preview-1--polovinka-messanger.netlify.app/500)
