@@ -1,0 +1,127 @@
+body {
+  font-family: 'Popins', sans-serif;
+  margin: 0;
+  padding: 0;
+  // background-color: rgb(241, 246, 245);
+  background-color: #fff;
+  color: #1e1e1e;
+  font-size: 13px;
+  font-size: 500;
+  line-height: 13px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.txtXl {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.txtL {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.txtM {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.txtS {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.txtXS {
+  font-size: 9px;
+  line-height: 13px;
+}
+
+// FORM
+.formContainer {
+  padding: 50px 30px 30px;
+  border-radius: 8px;
+  box-shadow: 6px 8px 8px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.formContent {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.formItems {
+  position: relative;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.inputtxt {
+  background-color: #fff;
+  width: 100%;
+  padding-bottom: 7px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #3369f3;
+}
+
+.inputtxt:focus {
+  outline: none;
+}
+
+.inputtxt:not(:placeholder-shown)::placeholder {
+  color: transparent;
+}
+
+label {
+  position: absolute;
+  top: 20px;
+  color: #999;
+  transition: all 0.2s ease;
+}
+
+.inputtxt:focus + label,
+.inputtxt:not(:placeholder-shown) + label {
+  top: -6px;
+  color: #999;
+  font-size: 9px;
+}
+
+.mainBtn {
+  background-color: #3369f3;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px 70px;
+  cursor: pointer;
+}
+
+.linkBtn {
+  display: block;
+  color: #3369f3;
+  text-decoration: none;
+}
+.mainBtn:hover,
+.linkBtn:hover {
+  opacity: 1;
+}
+
+.error {
+  color: #ff2f2f;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 8px;
+}
