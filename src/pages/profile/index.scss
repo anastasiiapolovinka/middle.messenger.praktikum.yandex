@@ -1,0 +1,85 @@
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  max-width: 510px;
+  background-color: var(--color-background);
+}
+
+.profileHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 21px;
+}
+
+.profileImg {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.profileHeader h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.profileDetails {
+  width: 100%;
+  max-width: 510px;
+
+  .mainBtn {
+    max-width: 280px;
+    width: 100%;
+    margin-top: 50px;
+    align-self: center;
+  }
+}
+
+.formProfile {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--border);
+}
+
+.profileDetails > div > span:last-child {
+  color: var(--color-placeholder);
+}
+
+.profileBtns {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+}
+
+.profileBtns a {
+  padding: 10px 0;
+}
+
+.profileBtns .linkBtn {
+  border-bottom: 2px solid var(--border);
+}
+
+.logoutBtn {
+  display: block;
+  color: var(--color-error);
+  text-decoration: none;
+}
+
+.logoutBtn:hover {
+  opacity: 1;
+}

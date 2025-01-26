@@ -1,0 +1,51 @@
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.formProfile {
+  position: relative;
+  display: flex;
+  border-bottom: 2px solid var(--border);
+}
+
+.profileDetails .formProfile {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileInput {
+  color: var(--color-placeholder);
+  width: 100%;
+  border: none;
+  text-align: end;
+}
+
+.profileInput:focus {
+  outline: none;
+}
+
+.profileInput:not(:placeholder-shown)::placeholder {
+  color: transparent;
+}
+
+label {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  color: #1e1e1e;
+  transition: all 0.2s ease;
+}
+
+.profileInput:focus + label,
+.profileInput:not(:placeholder-shown) + label {
+  top: -6px;
+  color: var(--color-placeholder);
+  font-size: 9px;
+}
+
+.change_data_btn {
+  margin-top: 60px;
+  width: 280px;
+  align-self: center;
+}
