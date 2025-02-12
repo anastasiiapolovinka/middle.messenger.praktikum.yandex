@@ -6,15 +6,16 @@
 .formProfile {
   position: relative;
   display: flex;
-  border-bottom: 2px solid #eaeaea;
+  border-bottom: 2px solid var(--border);
 }
+
 .profileDetails .formProfile {
   display: flex;
   flex-direction: column;
 }
 
 .profileInput {
-  color: #999;
+  color: var(--color-placeholder);
   width: 100%;
   border: none;
   text-align: end;
@@ -39,7 +40,7 @@ label {
 .profileInput:focus + label,
 .profileInput:not(:placeholder-shown) + label {
   top: -6px;
-  color: #999;
+  color: var(--color-placeholder);
   font-size: 9px;
 }
 

@@ -1,3 +1,9 @@
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -6,7 +12,7 @@
   height: 100vh;
   width: 100%;
   max-width: 510px;
-  background-color: #fff;
+  background-color: var(--color-background);
 }
 
 .profileHeader {
@@ -33,17 +39,24 @@
 .profileDetails {
   width: 100%;
   max-width: 510px;
+
+  .mainBtn {
+    max-width: 280px;
+    width: 100%;
+    margin-top: 50px;
+    align-self: center;
+  }
 }
 
-.profileDetails div {
+.formProfile {
   display: flex;
   justify-content: space-between;
   padding: 16px 0;
-  border-bottom: 2px solid #eaeaea;
+  border-bottom: 2px solid var(--border);
 }
 
 .profileDetails > div > span:last-child {
-  color: #999;
+  color: var(--color-placeholder);
 }
 
 .profileBtns {
@@ -53,16 +66,17 @@
   margin-top: 60px;
 }
 
-.profileBtns > a {
+.profileBtns a {
   padding: 10px 0;
 }
 
-.profileBtns > .linkBtn {
-  border-bottom: 2px solid #eaeaea;
+.profileBtns .linkBtn {
+  border-bottom: 2px solid var(--border);
 }
 
 .logoutBtn {
-  color: #ff0000;
+  display: block;
+  color: var(--color-error);
   text-decoration: none;
 }
 
