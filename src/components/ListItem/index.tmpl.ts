@@ -2,7 +2,7 @@ export default `
    <a href="{{url}}">
       <div class="chatPreview">
          <div class="avatar">
-            <img src="../../images/avatar.png" alt="avatar" />
+            <img src="{{avatar}}" alt="avatar" />
          </div>
          <div class="messagePreview">
             <div class="name">{{name}}</div>
@@ -10,7 +10,9 @@ export default `
          </div>
          <div class="messageInfo">
             <div class="time">{{time}}</div>
-            <div class="unread">{{unread}}</div>
+            {{#if unread}}
+               <div class="unread">{{unread}}</div>
+            {{/if}}
          </div>
       </div>
    </a>

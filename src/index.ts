@@ -1,5 +1,4 @@
 import "./style.scss";
-import Router from "./router";
 import MessagesLayout from "./layout/messages";
 import ProfileLayout from "./layout/profile";
 import ErrorPage from "./pages/error/ErrorPage";
@@ -9,6 +8,7 @@ import EditUsersData from "./pages/profile/editusersdata";
 import Profile from "./pages/profile";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
+import Router from "./modules/Router";
 
 // profile
 const editpassword = new EditPassword();
@@ -24,8 +24,13 @@ const editusersdataPage = new ProfileLayout({
 // auth
 const login = new Login();
 const register = new Register();
-const loginPage = new AuthLayout({ children: { content: login } });
-const registerPage = new AuthLayout({ children: { content: register } });
+const loginPage = new AuthLayout({
+  children: { content: login },
+  name: "login",
+});
+const registerPage = new AuthLayout({
+  children: { content: register },
+});
 // error
 const page404 = new ErrorPage({
   title: "404",
@@ -38,23 +43,19 @@ const page500 = new ErrorPage({
   linkButtonText: "Назад к чатам",
 });
 // chat
-const chatPage = new MessagesLayout();
+const chatPage = new MessagesLayout({ class: "chats" });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const app = document.querySelector("#app");
-  if (!app) return "";
-
-  const router = new Router(app);
+  const router = new Router("#app");
   router
-    .add("/", chatPage)
+    .add("/", loginPage)
+    .add("/register", registerPage)
+    .add("/messanger", chatPage)
+    .add("/chats", chatPage)
     .add("/profile", profilePage)
     .add("/editpassword", editpasswordPage)
     .add("/edituserdata", editusersdataPage)
-    .add("/register", registerPage)
-    .add("/signin", loginPage)
     .add("/404", page404)
-    .add("/500", page500);
-
-  router.go(window.location.pathname);
-  return "";
+    .add("/500", page500)
+    .start();
 });

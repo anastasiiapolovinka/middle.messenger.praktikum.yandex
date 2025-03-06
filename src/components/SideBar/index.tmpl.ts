@@ -8,10 +8,7 @@ export default `
             {{{searchInput}}}
           </header>
           <ul class="chatList">
-               {{{listItem_1}}}
-               {{{listItem_2}}}
-               {{{listItem_3}}}
-               {{{listItem_4}}}
+            {{{elements}}}
           </ul>
       </div>    
 `;

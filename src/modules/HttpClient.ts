@@ -6,7 +6,7 @@ export default class HttpClient {
     this.baseUrl = baseUrl;
   }
 
-  request(
+  request<T>(
     method: Method,
     url: string,
     {
@@ -17,18 +17,19 @@ export default class HttpClient {
       body?: { [key: string]: unknown } | null;
       headers?: Record<string, string>;
       params?: string | string[][] | Record<string, string> | URLSearchParams;
-    }
-  ) {
+    },
+  ): Promise<T> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
-      if (params && method === "GET") {
+      if (Object.keys(params).length && method === "GET") {
         url += "?" + new URLSearchParams(params).toString();
       }
 
       xhr.open(method, this.baseUrl + url, true);
+      xhr.withCredentials = true;
 
-      if (body && method !== "GET") {
+      if (body && !(body instanceof FormData) && method !== "GET") {
         headers["Content-Type"] = "application/json";
       }
       Object.entries(headers).forEach(([key, value]) => {
@@ -52,23 +53,27 @@ export default class HttpClient {
       xhr.onerror = () =>
         reject({ status: xhr.status, statusText: "Network Error" });
 
-      xhr.send(body && method !== "GET" ? JSON.stringify(body) : null);
+      if (body && method !== "GET") {
+        xhr.send(body instanceof FormData ? body : JSON.stringify(body));
+      } else {
+        xhr.send(null);
+      }
     });
   }
 
-  get(url: Method, params = {}) {
-    return this.request("GET", url, { params });
+  get<T>(url: string, params = {}): Promise<T> {
+    return this.request<T>("GET", url, { params });
   }
 
-  post(url: Method, body = {}, headers = {}) {
-    return this.request("POST", url, { body, headers });
+  post<T>(url: string, body = {}, headers = {}): Promise<T> {
+    return this.request<T>("POST", url, { body, headers });
   }
 
-  put(url: Method, body = {}, headers = {}) {
-    return this.request("PUT", url, { body, headers });
+  put<T>(url: string, body = {}, headers = {}): Promise<T> {
+    return this.request<T>("PUT", url, { body, headers });
   }
 
-  delete(url: Method, body = {}, headers = {}) {
+  delete(url: string, body = {}, headers = {}) {
     return this.request("DELETE", url, { body, headers });
   }
 }

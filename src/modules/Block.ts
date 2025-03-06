@@ -11,6 +11,7 @@ export type Props = {
   events?: { [key: string]: (e: Event, el?: HTMLFormElement) => void };
   id?: string;
   href?: string;
+  chatId?: string;
   [key: string]: unknown;
 };
 
@@ -27,6 +28,8 @@ export default abstract class Block {
   _props: Props;
   _eventBus: EventBus;
 
+  layout: string = "";
+
   constructor(tagName: string = "div", props: Props = {}) {
     const eventBus = new EventBus();
     this._eventBus = eventBus;
@@ -39,6 +42,10 @@ export default abstract class Block {
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.RENDER, this._render.bind(this));
+    eventBus.on(
+      Block.EVENTS.COMPONENT_DID_UPDATE,
+      this._componentDidUpdate.bind(this),
+    );
   }
 
   init() {
@@ -82,6 +89,14 @@ export default abstract class Block {
   _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
+
+  setProps = (nextProps: Props) => {
+    if (!nextProps) {
+      return;
+    }
+
+    Object.assign(this._props, nextProps);
+  };
 
   _makePropsProxy(props: Props) {
     return new Proxy(props, {
@@ -152,11 +167,12 @@ export default abstract class Block {
           `[data-id="${key}"]`,
         );
         if (placeholder && this._props.children) {
-          placeholder.replaceWith(
-            this._props.children[key] instanceof Block
-              ? this._props.children[key].getContent()
-              : "",
-          );
+          const child = this._props.children[key];
+          if (!child._props.elements) {
+            child._props.elements = this._props.elements;
+          }
+          const content = child instanceof Block ? child.getContent() : "";
+          placeholder.replaceWith(content);
         }
       });
 
@@ -188,6 +204,27 @@ export default abstract class Block {
     throw new Error("Expected an HTMLTemplateElement");
   }
 
+  _componentDidUpdate(oldProps: Props, newProps: Props) {
+    const response = this.componentDidUpdate(oldProps, newProps);
+    if (!response) {
+      return;
+    }
+    this._render();
+  }
+
+  rerender() {
+    this._render();
+  }
+
+  componentDidUpdate(oldProps: Props, newProps: Props) {
+    if (oldProps !== newProps) {
+      return true;
+    }
+    console.log("oldProps", oldProps);
+    console.log("newProps", newProps);
+    return false;
+  }
+
   addEvents() {
     const { events = {} } = this._props;
 
@@ -202,5 +239,17 @@ export default abstract class Block {
     Object.keys(events).forEach((eventName) => {
       this._element?.removeEventListener(eventName, events[eventName]);
     });
+  }
+
+  show() {
+    if (this._element) {
+      this._element.style.display = "flex";
+    }
+  }
+
+  hide() {
+    if (this._element) {
+      this._element.style.display = "none";
+    }
   }
 }

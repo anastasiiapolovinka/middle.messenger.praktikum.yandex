@@ -1,8 +1,14 @@
+import { AuthAPI, SignUpBody } from "../../api/auth";
 import Block, { Props } from "../../modules/Block";
+import Router from "../../modules/Router";
 
 import template from "./index.tmpl";
 
 type FormStateValue = string | boolean | Record<string, boolean>;
+
+const router = new Router();
+
+const authApi = new AuthAPI();
 
 export default class AuthLayout extends Block {
   formState: Record<string, FormStateValue> = {};
@@ -30,7 +36,36 @@ export default class AuthLayout extends Block {
           }
         });
 
-        console.log("Данные полей формы:", values);
+        const { first_name, second_name, login, email, password, phone } =
+          values;
+        if (props.name === "login") {
+          const loginData = {
+            login: login.toString(),
+            password: password.toString(),
+          };
+          authApi
+            .signin(loginData)
+            .then(() => authApi.getUserInfo())
+            .then(() => router.go("/messanger"))
+            .catch((err) => {
+              console.error(err);
+            });
+        } else {
+          const signUpData: SignUpBody = {
+            first_name: first_name.toString(),
+            second_name: second_name.toString(),
+            login: login.toString(),
+            email: email.toString(),
+            password: password.toString(),
+            phone: phone.toString(),
+          };
+          authApi
+            .signup(signUpData)
+            .then(() => router.go("/messanger"))
+            .catch((err) => {
+              console.error(err);
+            });
+        }
       },
       blur: (e: Event, form?: HTMLFormElement) => {
         e.preventDefault();
@@ -39,7 +74,12 @@ export default class AuthLayout extends Block {
           return this.showError(this.formState.errors);
         }
       },
+      goToRegister: (e: Event) => {
+        e.preventDefault();
+        router.go("/register");
+      },
     };
+
     super("main", props);
   }
   addEvents() {
@@ -50,6 +90,9 @@ export default class AuthLayout extends Block {
     form?.querySelectorAll("input[pattern]").forEach((input) => {
       input.addEventListener("blur", (e) => events.blur(e, form));
     });
+    form
+      ?.querySelector(".linkBtn")
+      ?.addEventListener("click", events.goToRegister);
   }
   render() {
     return this.compile(template);
@@ -65,7 +108,8 @@ export default class AuthLayout extends Block {
       const patternAttr = input.getAttribute("pattern");
       if (patternAttr && input instanceof HTMLInputElement) {
         const pattern = new RegExp(patternAttr);
-        if (!pattern.test(input.value.trim())) {
+        const isInvalid = !pattern.test(input.value.trim());
+        if (isInvalid) {
           const name = input.getAttribute("name")!;
           if (
             !this.formState.errors ||

@@ -13,6 +13,25 @@ export default `
         <circle cx="1.5" cy="14" r="1.5" fill="#1E1E1E"/>
       </svg>
     </button>
+    <nav class="chatSettings">
+      <ul>
+        <li>
+          <button class="mainBtn addUser">
+            Добавить пользователя
+          </button>
+        </li>
+        <li>
+          <button class="mainBtn deleteUser">
+            Удалить пользователя
+          </button>
+        </li>
+        <li>
+          <button class="mainBtn createChat">
+            Добавить чат
+          </button>
+        </li>
+      </ul>
+    </nav>
   </header>
   <div class="chat-messages">
     {{#each messages}}
