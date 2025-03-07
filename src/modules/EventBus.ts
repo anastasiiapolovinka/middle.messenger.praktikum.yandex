@@ -1,4 +1,4 @@
-type EventCallback = (...args: unknown[]) => void;
+type EventCallback<T extends unknown[] = unknown[]> = (...args: T) => void;
 
 export default class EventBus {
   private listeners: Record<string, EventCallback[]>;
@@ -6,11 +6,11 @@ export default class EventBus {
     this.listeners = {};
   }
 
-  on(event: string, callback: EventCallback): void {
+  on<T extends unknown[]>(event: string, callback: EventCallback<T>): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
-
+    // @ts-ignore
     this.listeners[event].push(callback);
   }
 

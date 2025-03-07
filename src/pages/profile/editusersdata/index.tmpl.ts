@@ -1,6 +1,6 @@
 export default `
    <div class="profileHeader">
-      <img class="profileImg" src="../../images/avatar.png" alt="Profile Image" />
+      <img class="profileImg" src="{{avatar}}" alt="Profile Image" />
    </div>
    <form class="profileDetails">
       {{{emailInput}}}

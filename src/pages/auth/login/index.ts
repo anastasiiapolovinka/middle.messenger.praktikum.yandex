@@ -12,7 +12,7 @@ const loginInput = new AuthInput({
   class: "formItem",
   value: "",
   label: "Логин",
-  pattern: "[a-zA-Z0-9\_-].{2,20}",
+  pattern: "[a-zA-Z0-9_-].{2,20}",
 });
 const paswordInput = new AuthInput({
   name: "password",

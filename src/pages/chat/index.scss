@@ -129,3 +129,28 @@
   width: 40px;
   height: 40px;
 }
+
+.chatSettings {
+  display: none;
+}
+
+.active + .chatSettings {
+  display: flex;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
+  background-color: var(--color-background);
+  position: absolute;
+  right: 50px;
+  top: 50px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+  }
+}

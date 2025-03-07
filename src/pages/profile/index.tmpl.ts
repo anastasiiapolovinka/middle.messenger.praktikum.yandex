@@ -1,7 +1,10 @@
 export default `
    <div class="profileHeader">
-      <img class="profileImg" src="{{avatar}}" alt="Profile Image" />
-      <h1>{{title}}</h1>
+      <div class="avatarWrapper">
+         <img class="profileImg" src="{{avatar}}" alt="Profile Image" />
+         <span class="uploadFileLabel">Поменять аватар</span>
+      </div> 
+      <h1>{{first_name}}</h1>
    </div>
    <div class="profileDetails">
       <div><span>Почта:</span><span>{{email}}</span></div>
@@ -15,5 +18,17 @@ export default `
       {{{changeDataBtn}}}
       {{{changePasswordBtn}}}
       {{{logoutBtn}}}
+   </div>
+   <div class="overlay">
+      <div class="modal">
+         <h2>Загрузите файл</h2>
+         <form class="avatarForm">
+            <label class="fileUpload" for="avatar">
+               <span>Выбрать файл на компьютере</span>
+               <input id="avatar" type="file" name="avatar" accept="image/*">
+            </label>
+            <button type="submit" class="saveBtn" >Поменять</button>
+         </form>
+      </div>
    </div>
 `;
