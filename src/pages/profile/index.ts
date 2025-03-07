@@ -18,7 +18,7 @@ const changePasswordBtn = new Link({
   class: "linkBtn",
 });
 const logoutBtn = new Link({
-  href: "/signin",
+  href: "/",
   text: "Выйти",
   class: "logoutBtn",
 });
