@@ -72,14 +72,14 @@ npm run lint:sccs
 
 Вот ссылки на все страницы:
 
-- [Чат](https://deploy-preview-1--polovinka-messanger.netlify.app/)
-- [Вход](https://deploy-preview-1--polovinka-messanger.netlify.app/signin)
-- [Регистрация](https://deploy-preview-1--polovinka-messanger.netlify.app/register)
-- [Профиль](https://deploy-preview-1--polovinka-messanger.netlify.app/profile)
-- [Изменение пароля](https://deploy-preview-1--polovinka-messanger.netlify.app/editpassword)
-- [Обновить данные профиля](https://deploy-preview-1--polovinka-messanger.netlify.app/edituserdata)
-- [404 - Не найдено](https://deploy-preview-1--polovinka-messanger.netlify.app/404)
-- [500 - Ошибка сервера](https://deploy-preview-1--polovinka-messanger.netlify.app/500)
+- [Чат](https://polovinka-messanger.netlify.app/messanger)
+- [Вход](https://polovinka-messanger.netlify.app)
+- [Регистрация](https://polovinka-messanger.netlify.app/register)
+- [Профиль](https://polovinka-messanger.netlify.app/profile)
+- [Изменение пароля](https://polovinka-messanger.netlify.app/editpassword)
+- [Обновить данные профиля](https://polovinka-messanger.netlify.app/edituserdata)
+- [404 - Не найдено](https://polovinka-messanger.netlify.app/404)
+- [500 - Ошибка сервера](https://polovinka-messanger.netlify.app/500)
 
 ## Features
 

@@ -4,7 +4,7 @@ export default `
          <img class="profileImg" src="{{avatar}}" alt="Profile Image" />
          <span class="uploadFileLabel">Поменять аватар</span>
       </div> 
-      <h1>{{title}}</h1>
+      <h1>{{first_name}}</h1>
    </div>
    <div class="profileDetails">
       <div><span>Почта:</span><span>{{email}}</span></div>

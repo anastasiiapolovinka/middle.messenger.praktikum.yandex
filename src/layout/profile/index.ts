@@ -16,7 +16,7 @@ export default class ProfileLayout extends Block {
   constructor(props: Props = {}) {
     props.class = "profile-wrapper";
     props.events = {
-      click: (e) => {
+      logout: (e) => {
         e.preventDefault();
         authApi.logout().then(() => {
           router.go("/");
@@ -80,7 +80,7 @@ export default class ProfileLayout extends Block {
     const { events = {} } = this._props;
 
     const logoutBtn = this._element?.querySelector(".logoutBtn");
-    logoutBtn?.addEventListener("click", events.click);
+    logoutBtn?.addEventListener("click", events.logout);
 
     const uploadFileLabel = this._element?.querySelector(".uploadFileLabel");
     uploadFileLabel?.addEventListener("click", events.showModal);

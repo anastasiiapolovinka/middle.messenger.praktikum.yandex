@@ -13,9 +13,6 @@ export default class Chat extends Block {
         localStorage.setItem("chatToken", token);
       });
     }
-    // props.messages = activeChat?.messages;
-    // props.sender = activeChat?.sender;
-    // props.avatar = activeChat?.avatar;
     super("main", props);
   }
   render() {

@@ -79,7 +79,14 @@ export default class AuthLayout extends Block {
         router.go("/register");
       },
     };
-
+    authApi
+      .getUserInfo()
+      .then(() => {
+        if (["/", "/register"].includes(window.location.pathname)) {
+          router.go("/messanger");
+        }
+      })
+      .catch(console.error);
     super("main", props);
   }
   addEvents() {

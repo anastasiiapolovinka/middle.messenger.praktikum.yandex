@@ -210,6 +210,7 @@ export default abstract class Block {
       return;
     }
     this._render();
+    this.rerender();
   }
 
   rerender() {
@@ -220,8 +221,6 @@ export default abstract class Block {
     if (oldProps !== newProps) {
       return true;
     }
-    console.log("oldProps", oldProps);
-    console.log("newProps", newProps);
     return false;
   }
 
