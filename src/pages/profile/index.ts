@@ -25,7 +25,7 @@ const logoutBtn = new Link({
 
 const authApi = new AuthAPI();
 const router = new Router();
-const title = "Иван";
+const first_name = "Иван";
 export default class Profile extends Block {
   layout = "profile";
   constructor(props: Props = {}) {
@@ -35,7 +35,14 @@ export default class Profile extends Block {
         this.setProps({ ...data, id: String(data.id) });
       }
     });
-    super("div", { ...props, avatar, title, class: "container" });
+    super("div", { ...props, avatar, first_name, class: "container" });
+  }
+
+  componentDidUpdate(oldProps: Props, newProps: Props): boolean {
+    if (Object.keys(oldProps).length < Object.keys(newProps).length) {
+      return true;
+    }
+    return false;
   }
 
   rerender() {

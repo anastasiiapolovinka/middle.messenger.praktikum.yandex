@@ -22,9 +22,7 @@ export class WSTransport extends EventBus {
     if (!this._socket) {
       throw new Error("Socket is not connected!");
     }
-    if (this._socket.readyState === WebSocket.OPEN) {
-      this._socket.send(JSON.stringify(data));
-    }
+    this._socket.send(JSON.stringify(data));
   }
 
   connect(): Promise<void> {

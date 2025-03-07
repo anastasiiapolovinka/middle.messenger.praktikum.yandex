@@ -88,6 +88,13 @@ export default class EditUsersData extends Block {
     });
     super("div", props);
   }
+  componentDidUpdate(oldProps: Props, newProps: Props): boolean {
+    if (Object.keys(oldProps).length < Object.keys(newProps).length) {
+      return true;
+    }
+    return false;
+  }
+
   rerender() {
     router.replaceRoute("/edituserdata", this);
   }

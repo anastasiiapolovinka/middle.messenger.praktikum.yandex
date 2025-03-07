@@ -35,13 +35,24 @@ export default class MessagesLayout extends Block {
     };
     let socketUrl = "wss://ya-praktikum.tech/ws/chats/";
     const token = localStorage.getItem("chatToken");
-    authApi
-      .getUserInfo()
-      .then(
-        (data: { id: number }) => `${socketUrl}${data?.id}/${chatId}/${token}`,
-      );
+    authApi.getUserInfo().then((data: { id: number }) => {
+      socketUrl = `${socketUrl}${data?.id}/${chatId}/${token}`;
+    });
     const socket = new WSTransport(socketUrl);
-    socket.connect();
+    async function initSocket() {
+      try {
+        await socket.connect();
+        console.log("WebSocket подключен");
+
+        socket.on("message", (data) => {
+          console.log("Новое сообщение:", data);
+        });
+      } catch (error) {
+        console.error("Ошибка подключения WebSocket:", error);
+      }
+    }
+
+    initSocket();
     props.events = {
       sendMessage: (e) => {
         e.preventDefault();
@@ -147,7 +158,9 @@ export default class MessagesLayout extends Block {
   }
 
   rerender() {
-    router.replaceRoute("/chats", this);
+    if (["/messanger", "/chats"].includes(window.location.pathname)) {
+      router.replaceRoute(window.location.pathname, this);
+    }
   }
 
   addEvents() {
@@ -166,5 +179,8 @@ export default class MessagesLayout extends Block {
 
     const deleteUserBtn = this._element?.querySelector(".deleteUser");
     deleteUserBtn?.addEventListener("click", events?.deleteUser);
+
+    const sendMsgForm = this._element?.querySelector(".chat-input");
+    sendMsgForm?.addEventListener("submit", events?.sendMessage);
   }
 }

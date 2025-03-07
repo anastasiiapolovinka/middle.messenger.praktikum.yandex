@@ -29,7 +29,9 @@ export const render = (
 
 export const prepareLayout = (component: Block) => {
   if (component.layout === "profile") {
-    return new ProfileLayout({ children: { content: component } });
+    return new ProfileLayout({
+      children: { content: component },
+    });
   }
   return component;
 };
